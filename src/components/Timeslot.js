@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
-import firebase from "./firebase";
+import Styled from "styled-components";
+import firebase from "../firebase";
 
 function useTimes() {
     const [times, setTimes] = useState([]);
@@ -84,44 +82,26 @@ function unixToDateWindow(timestamp_start) {
         formattedTime_end;
     return dateTime;
 }
-
-function App() {
+function Timeslot() {
     const times = useTimes();
     const timeslots = times.map((time) => (
-        <div key={time.id}>
-            <Button>
-                <div>{unixToDateWindow(time.timeslot)}</div>
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    Available Spots: {time.freeslot}
-                </div>
-            </Button>
-        </div>
+        <div key={time.id}>{unixToDateWindow(time.timeslot)}</div>
     ));
 
     return (
-        <div>
-            <div className="header">
-                <Navbar>
-                    <Navbar.Brand>Sched-Med</Navbar.Brand>
-                    <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
-                            Signed in as: <strong>Mary Ben</strong>
-                        </Navbar.Text>
-                    </Navbar.Collapse>
-                </Navbar>
-            </div>
-            <div className="centered">
-                <h2>{timeslots}</h2>
-            </div>
+        <div className="centered">
+            <h2>{timeslots}</h2>
         </div>
     );
 }
 
-export default App;
+export default Timeslot;
+
+const Wrapper = Styled.section`
+.centered {
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+`;
