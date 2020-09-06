@@ -1,68 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HackMed2020 Project
 
-## Available Scripts
+## Project Concept
 
-In the project directory, you can run:
+A smart platform with tools that help people schedule appointments for COVID19 tests to avoid crowds and wait times. Many universities have mandatory testing for students on campus, however there is no way to schedule in advance. This results in students waiting in lines, crowding around centers, and increasing the risk of disease spread. We're trying to build a platform that allows people to schedule and let center manage their resources to minimize patient risk and help health care provider. It also reduces burden for admin cost, improves efficiency, and provides data for ML and analytics as they know how many people to expect for tests.
 
-### `npm start`
+We're focus on making a simple UI for users and the health folk that are providing the service. We are using JavaScript (React, Node) for website design, UI, and Front-End and Python Django and Google's Firebase for the back-end, data management, and authenication. We will use APIs to take care of scheduling, admin portal, and notifications. It's full-stack project and we're geared on making a simple, usable end-product, focusing on the core product.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Team Member: Nabib Ahmed (Harvard Student), Ukeme Essien (Medical Doctor), Mary Ben Apatoff (Yale Student), Kevin Velasquez (John Hopkins Student)
+Track: Patient Adherence and Quality Care During a Global Pandemic
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Downloading
 
-### `npm test`
+To run:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. Git Clone
+2. NPM Install Dependencies
+3. NPM Start
