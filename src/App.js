@@ -88,7 +88,15 @@ function unixToDateWindow(timestamp_start) {
 function App() {
     const times = useTimes();
     const timeslots = times.map((time) => (
-        <div key={time.id}>
+        <div
+            key={time.id}
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "25px",
+            }}
+        >
             <Button>
                 <div>{unixToDateWindow(time.timeslot)}</div>
                 <div
