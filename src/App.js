@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Link,
+    Route,
+    Redirect,
+} from "react-router-dom";
 import firebase from "./firebase";
 
 function Welcome() {
@@ -40,6 +45,7 @@ function NavBar() {
         </div>
     );
 }
+
 function useTimes() {
     const [times, setTimes] = useState([]);
     useEffect(() => {
@@ -122,10 +128,13 @@ function unixToDateWindow(timestamp_start) {
 }
 
 function Schedule() {
+    const [scheduled, setScheduled] = useState(false);
+
     const times = useTimes();
 
     function onClick(e) {
         console.log(e);
+        setScheduled(true);
     }
 
     function color(freeslot) {
@@ -172,7 +181,15 @@ function Schedule() {
 
     return (
         <div>
-            <h2>{timeslots}</h2>
+            {scheduled ? <Redirect to="/confirmation" /> : <h2>{timeslots}</h2>}
+        </div>
+    );
+}
+
+function Confirmation() {
+    return (
+        <div>
+            <h1>Thank you for scheduling a COVID19 Test!</h1>
         </div>
     );
 }
@@ -183,12 +200,13 @@ function App() {
             <NavBar />
             <div className="centered">
                 <Router>
-                    <Route path="/" exact>
-                        <Welcome />
-                    </Route>
-                    <Route path="/schedule" exact>
-                        <Schedule />
-                    </Route>
+                    <Route path="/" component={Welcome} exact />
+                    <Route path="/schedule" component={Schedule} exact />
+                    <Route
+                        path="/confirmation"
+                        component={Confirmation}
+                        exact
+                    />
                 </Router>
             </div>
         </div>
