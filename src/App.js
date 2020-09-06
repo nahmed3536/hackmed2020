@@ -2,8 +2,44 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import firebase from "./firebase";
 
+function Welcome() {
+    return (
+        <div>
+            <h1>Schedule a COVID19 Test!</h1>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "25px",
+                }}
+            >
+                <Button className="btn btn-light">
+                    <Link to="/schedule">Click to login </Link>
+                </Button>
+            </div>
+        </div>
+    );
+}
+
+function NavBar() {
+    return (
+        <div className="header">
+            <Navbar>
+                <Navbar.Brand>Sched-Med</Navbar.Brand>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                    <Navbar.Text>
+                        Signed in as: <strong>Mary Ben</strong>
+                    </Navbar.Text>
+                </Navbar.Collapse>
+            </Navbar>
+        </div>
+    );
+}
 function useTimes() {
     const [times, setTimes] = useState([]);
     useEffect(() => {
@@ -85,48 +121,75 @@ function unixToDateWindow(timestamp_start) {
     return dateTime;
 }
 
-function App() {
+function Schedule() {
     const times = useTimes();
-    const timeslots = times.map((time) => (
-        <div
-            key={time.id}
-            style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "25px",
-            }}
-        >
-            <Button>
-                <div>{unixToDateWindow(time.timeslot)}</div>
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
+
+    function onClick(e) {
+        console.log(e);
+    }
+
+    function color(freeslot) {
+        if (freeslot < 3) {
+            return "btn btn-danger";
+        } else if (freeslot < 5) {
+            return "btn btn-warning";
+        } else {
+            return "btn btn-primary";
+        }
+    }
+
+    const timeslots = times.map((time) =>
+        time.freeslot > 0 ? (
+            <div
+                key={time.id}
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "25px",
+                }}
+            >
+                <Button
+                    className={color(time.freeslot)}
+                    onClick={() => onClick(time.id)}
                 >
-                    Available Spots: {time.freeslot}
-                </div>
-            </Button>
-        </div>
-    ));
+                    <div>{unixToDateWindow(time.timeslot)}</div>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        Location: {time.location}
+                    </div>
+                </Button>
+            </div>
+        ) : (
+            <div></div>
+        )
+    );
 
     return (
         <div>
-            <div className="header">
-                <Navbar>
-                    <Navbar.Brand>Sched-Med</Navbar.Brand>
-                    <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
-                            Signed in as: <strong>Mary Ben</strong>
-                        </Navbar.Text>
-                    </Navbar.Collapse>
-                </Navbar>
-            </div>
+            <h2>{timeslots}</h2>
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <div>
+            <NavBar />
             <div className="centered">
-                <h2>{timeslots}</h2>
+                <Router>
+                    <Route path="/" exact>
+                        <Welcome />
+                    </Route>
+                    <Route path="/schedule" exact>
+                        <Schedule />
+                    </Route>
+                </Router>
             </div>
         </div>
     );
