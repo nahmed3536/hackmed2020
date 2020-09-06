@@ -7,6 +7,7 @@ A smart platform with tools that help people schedule appointments for COVID19 t
 We're focus on making a simple UI for users and the health folk that are providing the service. We are using JavaScript (React, Node) for website design, UI, and Front-End and Python Django and Google's Firebase for the back-end, data management, and authenication. We will use APIs to take care of scheduling, admin portal, and notifications. It's full-stack project and we're geared on making a simple, usable end-product, focusing on the core product.
 
 Team Member: Nabib Ahmed (Harvard Student), Ukeme Essien (Medical Doctor), Mary Ben Apatoff (Yale Student), Kevin Velasquez (John Hopkins Student)
+
 Track: Patient Adherence and Quality Care During a Global Pandemic
 
 ## Downloading
